@@ -34,43 +34,33 @@ layout: default
     <h2 class="text-lg md:text-2xl font-semibold mb-4 md:mb-6">Модули обучения</h2>
     
     <div class="flex flex-col gap-3 md:gap-4">
-      <details class="group relative z-10">
-        <summary class="w-full py-2 md:py-3 rounded-full transition-all duration-200 font-medium text-sm md:text-base text-white cursor-pointer list-none relative z-20" style="background-color: var(--color-button-off);" onmouseover="this.style.backgroundColor='var(--color-button-on)'" onmouseout="this.style.backgroundColor='var(--color-button-off)'">
-          Знакомство с программой 
-        </summary>
-        <div class="submenu mt-2 mx-4 space-y-2 relative z-0">
-          {% assign intro_posts = site.posts | where_exp: "post", "post.path contains 'white_lion/main/introduction'" | sort: "date" %}
-          {% for post in intro_posts %}
-            <a href="{{ post.url }}" 
-               class="menu-link block w-full py-1.5 md:py-2 px-4 rounded-full transition-all duration-200 text-xs md:text-sm font-medium text-white backdrop-blur-sm text-center no-underline" 
-               style="background-color: var(--color-button-off);" 
-               onmouseover="this.style.backgroundColor='var(--color-button-on)'" 
-               onmouseout="this.style.backgroundColor='var(--color-button-off)'">
-              {{ post.title }}
-            </a>
-          {% endfor %}
-        </div>
-      </details>
+      {% assign section = page.url | split: '/' | slice: 2, 1 | first %}
+      {% assign filtered_articles = site.articles | where_exp: "item", "item.path contains section" %}
+      {% assign sorted_articles = filtered_articles | sort: "number" %}
+      {% assign last_group = "" %}
+      {% for post in sorted_articles %}
+        {% if post.group and post.group != last_group %}
+          {% if last_group != "" %}</div></details>{% endif %}
+          <details class="group relative z-10">
+            <summary class="w-full py-2 md:py-3 rounded-full transition-all duration-200 font-medium text-sm md:text-base text-white cursor-pointer list-none relative z-20" style="background-color: var(--color-button-off);" onmouseover="this.style.backgroundColor='var(--color-button-on)'" onmouseout="this.style.backgroundColor='var(--color-button-off)'">
+              {{ post.group }}
+            </summary>
+            <div class="submenu mt-2 mx-4 space-y-2 relative z-0">
+          {% assign last_group = post.group %}
+        {% endif %}
+        {% if post.group %}
+          <a href="{{ post.url }}"
+             class="menu-link block w-full py-1.5 md:py-2 px-4 rounded-full transition-all duration-200 text-xs md:text-sm font-medium text-white backdrop-blur-sm text-center no-underline"
+             style="background-color: var(--color-button-off);"
+             onmouseover="this.style.backgroundColor='var(--color-button-on)'"
+             onmouseout="this.style.backgroundColor='var(--color-button-off)'">
+            {{ post.title }}
+          </a>
+        {% endif %}
+        {% if forloop.last and post.group %}</div></details>{% endif %}
+      {% endfor %}
       
-      <details class="group relative z-10">
-        <summary class="w-full py-2 md:py-3 rounded-full transition-all duration-200 font-medium text-sm md:text-base text-white cursor-pointer list-none relative z-20" style="background-color: var(--color-button-off);" onmouseover="this.style.backgroundColor='var(--color-button-on)'" onmouseout="this.style.backgroundColor='var(--color-button-off)'">
-          Введение в профессию
-        </summary>
-        <div class="submenu mt-2 mx-4 space-y-2 relative z-0">
-          {% assign intro_posts = site.posts | where_exp: "post", "post.path contains 'white_lion/main/profession'" | sort: "date" %}
-          {% for post in intro_posts %}
-            <a href="{{ post.url }}" 
-               class="menu-link block w-full py-1.5 md:py-2 px-4 rounded-full transition-all duration-200 text-xs md:text-sm font-medium text-white backdrop-blur-sm text-center no-underline" 
-               style="background-color: var(--color-button-off);" 
-               onmouseover="this.style.backgroundColor='var(--color-button-on)'" 
-               onmouseout="this.style.backgroundColor='var(--color-button-off)'">
-              {{ post.title }}
-            </a>
-          {% endfor %}
-        </div>
-      </details>
-
-      <a href="/" class="block w-full py-2 md:py-3 rounded-full transition-all duration-200 font-medium text-sm md:text-base text-white text-center no-underline relative z-10" style="background-color: var(--color-button-off);" onmouseover="this.style.backgroundColor='var(--color-button-on)'" onmouseout="this.style.backgroundColor='var(--color-button-off)'">
+      <a href="/" class="block w-full py-2 md:py-3 rounded-full transition-all duration-200 font-medium text-sm md:text-base text-white text-center no-underline relative z-10" style="background-color: var(--color-button-off);" onmouseover="this.style.backgroundColor='var(--color-button-on)'" onmouseout="this.style.backgroundColor='var(--color-button-off)';">
         Диалоговый тренажер
       </a>
     </div>

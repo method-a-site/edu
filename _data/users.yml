@@ -1,6 +1,0 @@
-test:
-  pass: "test"
-  url: "/lms/test?key=test"
-leo46:
-  pass: "leo46"
-  url: "/lms/white_lion?key=wl46"

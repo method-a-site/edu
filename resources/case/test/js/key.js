@@ -2,7 +2,7 @@
 ---
 
 // ВКЛЮЧИТЬ/ВЫКЛЮЧИТЬ ПЕРЕНАПРАВЛЕНИЕ
-const redirectEnabled = true; // установите false чтобы отключить перенаправление
+const redirectEnabled = false; // установите false чтобы отключить перенаправление
 
 // ЗАДАТЬ СЕКРЕТНЫЙ КОД site.data.users.TEST.url
 const secretKey = "{{ site.data.users.test.url | split: '?' | last | split: '=' | last }}";
