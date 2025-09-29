@@ -1,0 +1,7 @@
+{% if page.url == "/" or page.url == "/index.html" %}
+  <link rel="stylesheet" href="/resources/css/index.css">
+{% elsif page.url contains "/lms/" %}
+  {% assign parts = page.url | split: "/" %}
+  {% assign project = parts[2] %}
+  <link rel="stylesheet" href="/resources/case/{{ project }}/css/index.css">
+{% endif %}
