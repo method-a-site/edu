@@ -3,14 +3,15 @@
     style="backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); position:relative;"
   >
     <span class="nav-hover-bg" style="position:absolute;z-index:1;pointer-events:none;opacity:0;border-radius:9999px;"></span>
-    <a href="https://journal.{{ site.url | remove: 'https://' | remove: 'http://' }}" 
+    <a href="{{ site.url }}" 
        class="nav-link font-semibold rounded-full py-1 text-center whitespace-nowrap text-sm px-3 sm:text-base sm:px-4" 
+       data-active="false"
        style="position:relative;z-index:2;">
        <span class="magnet-text">Журнал</span>
     </a>
-    <a href="/ai" 
+    <a href="{{ site.url }}/ai" 
        class="nav-link font-semibold rounded-full py-1 text-center whitespace-nowrap text-sm px-3 sm:text-base sm:px-4"
-       data-active="{% if page.url == '/ai' or page.url == '/ai.html' %}true{% else %}false{% endif %}"
+       data-active="false"
        style="position:relative;z-index:2;">
        <span class="magnet-text">Метод AI</span>
     </a>
@@ -20,9 +21,9 @@
        style="position:relative;z-index:2;">
        <span class="magnet-text">Курсы</span>
     </a>
-    <a href="/about" 
+    <a href="{{ site.url }}/about" 
        class="nav-link font-semibold rounded-full py-1 text-center whitespace-nowrap text-sm px-3 sm:text-base sm:px-4"
-       data-active="{% if page.url == '/about' or page.url == '/about.html' %}true{% else %}false{% endif %}"
+       data-active="false"
        style="position:relative;z-index:2;">
        <span class="magnet-text">О нас</span>
     </a>
