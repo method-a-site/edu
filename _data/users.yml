@@ -3,4 +3,4 @@ test:
   url: "/lms/test?key=test"
 leo46:
   pass: "leo46"
-  url: "/lms/white_lion?key=wl46"
+  url: "/lms/leo46?key=wl46"

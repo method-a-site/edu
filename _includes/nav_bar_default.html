@@ -1,20 +1,30 @@
-{% assign hover_link = '
-      class="font-semibold rounded-full py-1 text-center whitespace-nowrap text-sm px-3 sm:text-base sm:px-4"
-      style="background:var(--color-hover-current-page); color:var(--color-text-current-page)"
-' %}
-
-{% assign usual_link = ' 
-      class="font-semibold rounded-full hover:bg-[var(--color-custom-hover)] py-1 text-center whitespace-nowrap text-sm px-3 sm:text-base sm:px-4"
-      style="color:var(--color-logo);"
-' %}
-
 <div class="fixed left-0 right-0 bottom-4 z-50 flex justify-center sm:top-4 sm:bottom-auto sm:left-1/2 sm:right-auto sm:-translate-x-1/2">
-  <div class="inline-flex h-10 sm:h-12 rounded-full items-center justify-between px-2 bg-white/40 backdrop-blur-md w-full max-w-xs sm:w-auto sm:max-w-none"
-    style="backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);"
+  <div id="navBarAnimated" class="inline-flex h-10 sm:h-12 rounded-full items-center justify-between px-2 bg-white/40 backdrop-blur-md w-full max-w-xs sm:w-auto sm:max-w-none"
+    style="backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); position:relative;"
   >
-    <a href="https://journal.{{ site.url | remove: 'https://' | remove: 'http://' }}" {{ usual_link }}>Журнал</a>
-    <a href="{{ site.url }}/ai" {{ usual_link }}>Метод AI</a>
-    <a href="https://edu.{{ site.url | remove: 'https://' | remove: 'http://' }}" {{ hover_link }}>Курсы</a>
-    <a href="{{ site.url }}/about" {{ usual_link }}>О нас</a>
+    <span class="nav-hover-bg" style="position:absolute;z-index:1;pointer-events:none;opacity:0;border-radius:9999px;"></span>
+    <a href="https://journal.{{ site.url | remove: 'https://' | remove: 'http://' }}" 
+       class="nav-link font-semibold rounded-full py-1 text-center whitespace-nowrap text-sm px-3 sm:text-base sm:px-4" 
+       style="position:relative;z-index:2;">
+       <span class="magnet-text">Журнал</span>
+    </a>
+    <a href="/ai" 
+       class="nav-link font-semibold rounded-full py-1 text-center whitespace-nowrap text-sm px-3 sm:text-base sm:px-4"
+       data-active="{% if page.url == '/ai' or page.url == '/ai.html' %}true{% else %}false{% endif %}"
+       style="position:relative;z-index:2;">
+       <span class="magnet-text">Метод AI</span>
+    </a>
+    <a href="https://edu.{{ site.url | remove: 'https://' | remove: 'http://' }}" 
+       class="nav-link font-semibold rounded-full py-1 text-center whitespace-nowrap text-sm px-3 sm:text-base sm:px-4"
+       data-active="true"
+       style="position:relative;z-index:2;">
+       <span class="magnet-text">Курсы</span>
+    </a>
+    <a href="/about" 
+       class="nav-link font-semibold rounded-full py-1 text-center whitespace-nowrap text-sm px-3 sm:text-base sm:px-4"
+       data-active="{% if page.url == '/about' or page.url == '/about.html' %}true{% else %}false{% endif %}"
+       style="position:relative;z-index:2;">
+       <span class="magnet-text">О нас</span>
+    </a>
   </div>
 </div>

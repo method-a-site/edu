@@ -46,7 +46,7 @@
       <!-- QR-код -->
       <div class="w-32 h-32 mb-6 flex items-center justify-center bg-gray-100 rounded-xl hidden sm:flex">
         <!-- Вставьте сюда ваш QR-код -->
-        <img src="/resources/qr/telegram_channel.png"
+        <img src="/resources/data/qr/telegram_channel.png"
           alt="QR Telegram"
           class="w-30 h-30 object-contain"
         />
@@ -86,13 +86,13 @@
   <div class="fixed left-1/2 -translate-x-1/2 bottom-18 z-50 sm:top-18 sm:bottom-auto w-full max-w-4xl w-sm sm:w-full px-10 sm:px-40 pointer-events-none">
     <div class="flex rounded-3xl items-center justify-center px-5 w-full z-50 bg-[var(--color-nav-bg)] pointer-events-auto">
       <div class="p-1 flex flex-col w-full">
-        {% assign headings = content | split: '<h3' %}
+        {% assign headings = content | split: '<h1' %}
         {% for heading in headings %}
           {% if forloop.first == false %}
             {% assign heading_parts = heading | split: '>' %}
             {% if heading_parts.size > 1 %}
               {% assign heading_rest = heading_parts[1] %}
-              {% assign heading_content = heading_rest | split: '</h3' | first | strip_html | strip %}
+              {% assign heading_content = heading_rest | split: '</h1' | first | strip_html | strip %}
               {% if heading_content != '' %}
                 {% assign heading_id = heading_content | slugify %}
                 <a href="#{{ heading_id }}" class="block w-full px-4 py-2 text-sm text-center hover:bg-[var(--color-custom-hover)] rounded-full m-1 transition-colors duration-200 no-underline focus:bg-[var(--color-custom-hover)] focus:outline-none bg-fade">{{ heading_content }}</a>

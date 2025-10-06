@@ -56,11 +56,11 @@
     bottom: -150px;
 }
 
-.circles li:nth-child(1), .circles li:nth-child(6) { background-image: url('/resources/case/white_lion/img/background/1.svg'); }
-.circles li:nth-child(2), .circles li:nth-child(7) { background-image: url('/resources/case/white_lion/img/background/2.svg'); }
-.circles li:nth-child(3), .circles li:nth-child(8) { background-image: url('/resources/case/white_lion/img/background/3.svg'); }
-.circles li:nth-child(4), .circles li:nth-child(9) { background-image: url('/resources/case/white_lion/img/background/4.svg'); }
-.circles li:nth-child(5), .circles li:nth-child(10) { background-image: url('/resources/case/white_lion/img/background/5.svg'); }
+.circles li:nth-child(1), .circles li:nth-child(6) { background-image: url('/resources/case/leo46/img/background/1.svg'); }
+.circles li:nth-child(2), .circles li:nth-child(7) { background-image: url('/resources/case/leo46/img/background/2.svg'); }
+.circles li:nth-child(3), .circles li:nth-child(8) { background-image: url('/resources/case/leo46/img/background/3.svg'); }
+.circles li:nth-child(4), .circles li:nth-child(9) { background-image: url('/resources/case/leo46/img/background/4.svg'); }
+.circles li:nth-child(5), .circles li:nth-child(10) { background-image: url('/resources/case/leo46/img/background/5.svg'); }
 
 .circles li:nth-child(1) { left: 25%; width: calc(25px * var(--size-md)); height: calc(25px * var(--size-md)); animation-delay: 0s; }
 .circles li:nth-child(2) { left: 10%; width: calc(8px * var(--size-xs)); height: calc(8px * var(--size-xs)); animation-delay: 2s; animation-duration: 12s; }

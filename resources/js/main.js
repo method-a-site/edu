@@ -72,4 +72,60 @@ document.addEventListener('DOMContentLoaded', function() {
       closeModal();
     }
   });
+
+  // Magnet effect for all elements with magnet-text class
+  const magnetLinks = document.querySelectorAll('a');
+  magnetLinks.forEach(link => {
+    const text = link.querySelector('.magnet-text');
+    if (!text) return;
+    text.style.transition = 'transform 0.25s cubic-bezier(.22,1,.36,1)';
+    link.addEventListener('mousemove', function(e) {
+      const rect = link.getBoundingClientRect();
+      const x = e.clientX - rect.left - rect.width / 2;
+      const tx = Math.round(x * 0.08);
+      text.style.transform = `translateX(${tx}px)`;
+    });
+    link.addEventListener('mouseleave', function() {
+      text.style.transform = 'translate(0,0)';
+    });
+  });
+
+  // Navigation bar hover and active state management
+  const navBarAnimated = document.getElementById('navBarAnimated');
+  if (!navBarAnimated) return;
+
+  const hoverBg = navBarAnimated.querySelector('.nav-hover-bg');
+  const navLinks = navBarAnimated.querySelectorAll('.nav-link');
+  const activeLink = navBarAnimated.querySelector('.nav-link[data-active="true"]');
+  
+  // Clear conflicting inline styles
+  navLinks.forEach(link => {
+    link.style.removeProperty('background-color');
+    link.style.removeProperty('color');
+  });
+  
+  function moveBgToLink(link) {
+    const rect = link.getBoundingClientRect();
+    const parentRect = navBarAnimated.getBoundingClientRect();
+    
+    Object.assign(hoverBg.style, {
+      width: rect.width + 'px',
+      height: rect.height + 'px',
+      left: (rect.left - parentRect.left) + 'px',
+      top: (rect.top - parentRect.top) + 'px',
+      background: 'var(--color-custom-hover)',
+      opacity: '1',
+      transition: 'all 0.35s cubic-bezier(.22,1,.36,1)'
+    });
+  }
+  
+  navLinks.forEach(link => {
+    link.addEventListener('mouseenter', () => moveBgToLink(link));
+    link.addEventListener('mouseleave', () => {
+      activeLink ? moveBgToLink(activeLink) : hoverBg.style.opacity = '0';
+    });
+  });
+
+  // Initialize
+  activeLink ? moveBgToLink(activeLink) : hoverBg.style.opacity = '0';
 });

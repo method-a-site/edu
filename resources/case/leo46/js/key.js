@@ -4,12 +4,8 @@
 // ВКЛЮЧИТЬ/ВЫКЛЮЧИТЬ ПЕРЕНАПРАВЛЕНИЕ
 const redirectEnabled = true; // установите false чтобы отключить перенаправление
 
-// ПОЛУЧАЕМ ВСЕ КЛЮЧИ ИЗ СПИСКА ПОЛЬЗОВАТЕЛЕЙ
-const validKeys = [
-  {% for user in site.data.users %}
-    "{{ user[1].url | split: '?' | last | split: '=' | last }}"{% unless forloop.last %},{% endunless %}
-  {% endfor %}
-];
+// ЗАДАТЬ СЕКРЕТНЫЙ КОД site.data.users.LEO46.url
+const secretKey = "{{ site.data.users.leo46.url | split: '?' | last | split: '=' | last }}";
 
   // получаем параметры из URL
   const urlParams = new URLSearchParams(window.location.search);
@@ -40,7 +36,7 @@ const validKeys = [
                          performance.navigation?.type === performance.navigation?.TYPE_RELOAD;
     
     // используем сохраненный ключ только если это обновление той же страницы
-    if (savedKey && savedUrl === currentUrl && isPageRefresh && validKeys.includes(savedKey)) {
+    if (savedKey && savedUrl === currentUrl && isPageRefresh && savedKey === secretKey) {
       userKey = savedKey;
       // добавляем ключ в URL для верификации
       urlParams.set("key", userKey);
@@ -49,8 +45,8 @@ const validKeys = [
     }
   }
 
-  // проверяем наличие кода среди валидных ключей
-  if (redirectEnabled && (!userKey || !validKeys.includes(userKey))) {
+  // проверяем наличие кода
+  if (redirectEnabled && (!userKey || userKey !== secretKey)) {
     // очищаем localStorage при неуспешной верификации
     localStorage.removeItem("userKey");
     localStorage.removeItem("currentUrl");
@@ -80,12 +76,12 @@ document.addEventListener("DOMContentLoaded", () => {
       const url = new URL(this.href, window.location.origin);
 
       // если параметра key ещё нет — добавляем
-      if (!url.searchParams.has("key") && userKey && validKeys.includes(userKey)) {
+      if (!url.searchParams.has("key") && userKey && userKey === secretKey) {
         url.searchParams.set("key", userKey);
       }
 
-      // открываем в новой вкладке
-      window.open(url.toString(), "_blank");
+      // переходим в текущей вкладке
+      window.location.href = url.toString();
     });
   });
 });

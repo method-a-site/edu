@@ -1,0 +1,29 @@
+/* Общие цвета для страниц */
+:root {
+  --color-custom-hover: #00000010;
+  --color-modal-background: #ffffff;
+  --color-messenger1: #25D366;
+  --color-messenger2: #2AABEE;
+}
+
+/* Magnet effect for nav bar links */
+.inline-flex.h-10 a, .inline-flex.h-12 a {
+  will-change: transform;
+  transition: transform 0.25s cubic-bezier(.22,1,.36,1);
+}
+
+.magnet-text {
+  display: inline-block;
+  will-change: transform;
+  transition: transform 0.25s cubic-bezier(.22,1,.36,1);
+}
+
+/* Navigation bar active state - loads immediately */
+.nav-link[data-active="true"] {
+  background-color: var(--color-hover-current-page);
+  color: var(--color-text-current-page);
+}
+
+.nav-link:not([data-active="true"]) {
+  color: var(--color-logo);
+}
