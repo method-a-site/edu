@@ -40,32 +40,31 @@
 
   <div id="heartModal" class="modal-overlay" onclick="closeModal()">
     <div
-      class="modal-content w-full max-w-md sm:max-w-xl p-8 sm:p-12 rounded-2xl bg-white flex flex-col items-center"
+      class="modal-content mx-4 w-auto max-w-sm sm:max-w-md lg:max-w-lg p-6 sm:p-8 lg:p-10 rounded-2xl sm:rounded-3xl bg-white flex flex-col items-center shadow-2xl"
       onclick="event.stopPropagation()"
     >
-      <!-- QR-код -->
-      <div class="w-32 h-32 mb-6 flex items-center justify-center bg-gray-100 rounded-xl hidden sm:flex">
-        <!-- Вставьте сюда ваш QR-код -->
+      <!-- QR-код - скрыт на мобильных для экономии места -->
+      <div class="w-24 h-24 lg:w-32 lg:h-32 mb-4 lg:mb-6 flex items-center justify-center bg-gray-100 rounded-xl hidden sm:flex">
         <img src="/resources/data/qr/telegram_channel.png"
           alt="QR Telegram"
-          class="w-30 h-30 object-contain"
+          class="w-20 h-20 lg:w-28 lg:h-28 object-contain"
         />
       </div>
 
-      <!-- Привлекательная надпись -->
-      <h3 class="mb-2 text-gray-900 text-3xl font-extrabold text-center leading-tight tracking-tight">
+      <!-- Привлекательная надпись - адаптивные размеры -->
+      <h3 class="mb-3 text-gray-900 text-xl sm:text-2xl lg:text-3xl font-extrabold text-center leading-tight tracking-tight">
         Присоединяйтесь к нашему Telegram!
       </h3>
-      <p class="mb-6 text-gray-700 text-center text-lg sm:text-xl font-base leading-relaxed">
-        Получайте быстрые ответы, делитесь идеями и находите решения вместе с экспертами.<br>
-        <span class="font-semibold text-gray-800">Ваш успех — наша миссия!</span>
+      <p class="mb-5 sm:mb-6 text-gray-700 text-center text-sm sm:text-base lg:text-lg font-base leading-relaxed px-2">
+        Получайте быстрые ответы, делитесь идееями и находите решения вместе с экспертами.
+        <span class="block mt-2 font-semibold text-gray-800">Ваш успех — наша миссия!</span>
       </p>
 
-      <!-- Кнопка Telegram -->
+      <!-- Кнопка Telegram - компактнее на мобильных -->
       <a href="https://t.me/{{ site.telegram }}" target="_blank" rel="noopener noreferrer"
-        class="flex items-center gap-2 bg-[#2AABEE] hover:bg-[#229fdc] text-white font-semibold px-6 py-3 rounded-full text-lg transition mb-4"
+        class="flex items-center justify-center gap-2 bg-[#2AABEE] hover:bg-[#229fdc] active:bg-[#1e90c7] text-white font-semibold px-5 sm:px-6 py-2.5 sm:py-3 rounded-xl sm:rounded-full text-base sm:text-lg transition-colors duration-200 mb-3 sm:mb-4 w-full sm:w-auto min-w-[200px]"
       >
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" width="24" height="24" viewBox="0 0 24 24">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" width="20" height="20" sm:width="24" sm:height="24" viewBox="0 0 24 24" class="flex-shrink-0">
           <path d="M9.04 12.34l-0.31 4.37c0.45 0 0.65-0.19 0.89-0.42l2.14-2.04 4.44 3.24c0.81 0.45 1.39 0.21 1.6-0.75l2.9-13.36c0.26-1.18-0.43-1.64-1.21-1.36l-17.02 6.56c-1.16 0.45-1.15 1.1-0.2 1.39l4.36 1.36 10.13-6.38c0.48-0.3 0.92-0.13 0.56 0.17l-8.2 7.41z" fill="currentColor"/>
         </svg>
         Перейти в Telegram
@@ -74,7 +73,7 @@
       <!-- Кнопка закрытия -->
       <button
         onclick="closeModal()"
-        class="mt-2 bg-gray-200 hover:bg-gray-300 text-gray-700 border-none py-2 px-6 rounded-lg cursor-pointer text-base font-semibold transition"
+        class="mt-2 bg-gray-200 hover:bg-gray-300 active:bg-gray-400 text-gray-700 border-none py-2 px-4 sm:px-6 rounded-lg cursor-pointer text-sm sm:text-base font-semibold transition-colors duration-200"
       >
         Закрыть
       </button>
@@ -95,7 +94,7 @@
               {% assign heading_content = heading_rest | split: '</h1' | first | strip_html | strip %}
               {% if heading_content != '' %}
                 {% assign heading_id = heading_content | slugify %}
-                <a href="#{{ heading_id }}" class="block w-full px-4 py-2 text-sm text-center hover:bg-[var(--color-custom-hover)] rounded-full m-1 transition-colors duration-200 no-underline focus:bg-[var(--color-custom-hover)] focus:outline-none bg-fade">{{ heading_content }}</a>
+                <a href="#{{ heading_id }}" class="block w-full px-4 py-2 text-sm text-center hover:bg-[var(--color-custom-hover)] rounded-full m-1 transition-colors duration-200 no-underline focus:bg-[var(--color-custom-hover)] focus:outline-none bg-fade" onclick="closeDropdown()">{{ heading_content }}</a>
               {% endif %}
             {% endif %}
           {% endif %}
@@ -104,3 +103,4 @@
     </div>
   </div>
 </div>
+
