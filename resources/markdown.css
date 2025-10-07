@@ -60,6 +60,43 @@
   margin-bottom: 0;
 }
 
+/* Улучшенные стили для буллетов */
+.markdown-body ul {
+  list-style-type: none;
+  padding-left: 1.2em;
+}
+
+.markdown-body ul li {
+  position: relative;
+  padding-left: 0.3em;
+}
+
+.markdown-body ul li::before {
+  content: "•";
+  color: var(--color-nav-text);
+  font-weight: normal;
+  font-size: 1em;
+  position: absolute;
+  left: -0.6em;
+  top: 0;
+}
+
+/* Вложенные списки */
+.markdown-body ul ul {
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+.markdown-body ul ul li::before {
+  content: "◦";
+  font-size: 1em;
+}
+
+.markdown-body ul ul ul li::before {
+  content: "▪";
+  font-size: 0.9em;
+}
+
 /* Блочные цитаты */
 .markdown-body blockquote {
   margin: 0;
