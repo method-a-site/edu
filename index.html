@@ -2,36 +2,49 @@
 layout: default
 ---
 
-<section class="min-h-screen w-full flex items-center justify-center px-3 sm:px-4">
-  <div class="w-full max-w-xs sm:max-w-sm rounded-2xl p-4 sm:p-5 md:p-6"
-       style="background-color: rgba(255, 255, 255, 0.5); color: var(--color-logo); backdrop-filter: blur(8px);">
-    <form class="space-y-4" action="#" method="post">
-      <div>
-        <input id="email"
-               name="email"
-               type="email"
-               placeholder="Логин"
-               required
-               class="w-full rounded-xl px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base focus:outline-none"
-               style="background-color: rgba(255, 255, 255, 0.85); color: var(--color-logo);" />
-      </div>
-
-      <div>
-        <input id="password"
-               name="password"
-               type="password"
-               placeholder="Пароль"
-               required
-               class="w-full rounded-xl px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base focus:outline-none"
-               style="background-color: rgba(255, 255, 255, 0.85); color: var(--color-logo);" />
-      </div>
-
-      <button type="submit"
-              class="w-full rounded-xl px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base font-medium transition duration-200 ease-out hover:brightness-95 active:brightness-90"
-              style="background-color: var(--color-text-current-page); color: var(--color-hover-current-page);">
-        Войти
-      </button>
-    </form>
+<div class="relative min-h-screen w-full overflow-hidden">
+  <div class="login-bg absolute inset-0 pointer-events-none">
+    <ul class="circles">
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
   </div>
-</section>
+
+  <section class="relative z-10 min-h-screen w-full flex items-center justify-center px-3 sm:px-4">
+    <div class="login-card w-full max-w-xs sm:max-w-sm rounded-2xl p-4 sm:p-5 md:p-6">
+      <form class="space-y-4" action="#" method="post">
+        <div>
+          <input id="email"
+                 name="email"
+                 type="email"
+                 placeholder="Логин"
+                 required
+                 class="login-input w-full rounded-xl px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base border border-transparent placeholder:opacity-70 transition duration-200 ease-out hover:bg-white/95 focus:outline-none focus:bg-white" />
+        </div>
+
+        <div>
+          <input id="password"
+                 name="password"
+                 type="password"
+                 placeholder="Пароль"
+                 required
+                 class="login-input w-full rounded-xl px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base border border-transparent placeholder:opacity-70 transition duration-200 ease-out hover:bg-white/95 focus:outline-none focus:bg-white" />
+        </div>
+
+        <button type="submit"
+                class="login-button w-full rounded-xl px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base font-medium transition duration-200 ease-out hover:brightness-95 active:brightness-90">
+          Войти
+        </button>
+      </form>
+    </div>
+  </section>
+</div>
 
