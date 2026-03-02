@@ -1,0 +1,31 @@
+<div class="fixed left-0 right-0 bottom-4 z-50 flex justify-center sm:top-4 sm:bottom-auto sm:left-1/2 sm:right-auto sm:-translate-x-1/2">
+  <div id="navBarAnimated" class="inline-flex h-10 sm:h-12 rounded-full items-center justify-between px-2 bg-white/40 backdrop-blur-md w-full max-w-xs sm:w-auto sm:max-w-none"
+    style="backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); position:relative;"
+  >
+    <span class="nav-hover-bg" style="position:absolute;z-index:1;pointer-events:none;opacity:0;border-radius:9999px;"></span>
+    <a href="https://journal.{{ site.url | remove: 'https://' | remove: 'http://' }}" 
+       class="nav-link font-semibold rounded-full py-1 text-center whitespace-nowrap text-sm px-3 sm:text-base sm:px-4"
+       data-active="true"
+       style="position:relative;z-index:2;">
+       <span class="magnet-text">Журнал</span>
+    </a>
+    <a href="https://{{ site.url | remove: 'https://' | remove: 'http://' }}/ai" 
+       class="nav-link font-semibold rounded-full py-1 text-center whitespace-nowrap text-sm px-3 sm:text-base sm:px-4"
+       data-active="false"
+       style="position:relative;z-index:2;">
+       <span class="magnet-text">Метод AI</span>
+    </a>
+    <a href="https://edu.{{ site.url | remove: 'https://' | remove: 'http://' }}" 
+       class="nav-link font-semibold rounded-full py-1 text-center whitespace-nowrap text-sm px-3 sm:text-base sm:px-4"
+       data-active="false"
+       style="position:relative;z-index:2;">
+       <span class="magnet-text">LMS</span>
+    </a>
+    <a href="https://{{ site.url | remove: 'https://' | remove: 'http://' }}/about" 
+       class="nav-link font-semibold rounded-full py-1 text-center whitespace-nowrap text-sm px-3 sm:text-base sm:px-4"
+       data-active="false"
+       style="position:relative;z-index:2;">
+       <span class="magnet-text">О нас</span>
+    </a>
+  </div>
+</div>

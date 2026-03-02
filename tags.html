@@ -1,0 +1,55 @@
+---
+layout: default
+---
+
+<!-- Секция с фоном и слайдами -->
+<div class="relative w-full">   
+  <div class="background-blend absolute top-0 left-0 w-full h-full z-10"></div>
+  
+  <div class="slide-section relative z-20 bg-transparent" data-bg="var(--color-background-top)">
+    
+    <!-- Заголовок -->
+    <div class="text-center mt-12 mb-12 md:mb-0">
+      <h1 class="text-5xl md:text-9xl font-bold md:scale-y-[2.25] md:-translate-y-full hidden md:block">Теги</h1>
+      <h1 class="text-base md:text-3xl font-medium md:-translate-y-[150%] hidden md:block">Все темы статей</h1>
+      
+      <!-- Кнопка возврата -->
+      <div class="mt-8 mb-8">
+        <a href="{{ site.baseurl }}/" 
+           class="px-4 py-2 rounded-full font-medium transition-colors duration-300 border border-transparent"
+           style="background-color: var(--color-hover-current-page); color: var(--color-text-current-page);"
+           onmouseover="this.style.backgroundColor='var(--color-text-current-page)';this.style.color='var(--color-hover-current-page)';"
+           onmouseout="this.style.backgroundColor='var(--color-hover-current-page)';this.style.color='var(--color-text-current-page)';">
+          ← Все статьи
+        </a>
+      </div>
+    </div>
+
+    <!-- Облако тегов -->
+    <div class="w-full md:max-w-5xl mx-auto px-2 sm:px-4 mb-12">
+      <div class="flex flex-wrap justify-center gap-4">
+        {% assign sorted_tags = site.tags | sort %}
+        {% for tag_item in sorted_tags %}
+          {% assign tag_name = tag_item[0] %}
+          {% assign tag_posts = tag_item[1] %}
+          <a href="{{ site.baseurl }}/tag/{{ tag_name | slugify }}/" 
+             class="group px-6 py-3 rounded-full font-medium transition-all duration-300 border border-current text-center"
+             style="color: var(--color-logo); border-color: var(--color-hover-current-page);"
+             onmouseover="this.style.backgroundColor='var(--color-text-current-page)'; this.style.color='var(--color-hover-current-page)'; this.style.borderColor='transparent';"
+             onmouseout="this.style.backgroundColor='transparent'; this.style.color='var(--color-logo)'; this.style.borderColor='var(--color-hover-current-page)';">
+            {{ tag_name }}
+            <span class="text-sm opacity-60 ml-1">({{ tag_posts.size }})</span>
+          </a>
+        {% endfor %}
+      </div>
+    </div>
+
+  </div>
+
+  <div style="height:80vh"></div>
+</div>
+
+{% include footer.html %}
+
+<script src="/resources/js/index/main-background.js"></script>
+<script src="/resources/js/smooth-scroll.js"></script>

@@ -1,0 +1,38 @@
+---
+layout: default
+---
+
+<!-- Секция с фоном и слайдами -->
+<div class="relative w-full">   
+  <div class="background-blend absolute top-0 left-0 w-full h-full z-10"></div>
+  
+  <div class="slide-section relative z-20 bg-transparent" data-bg="var(--color-background-top)">
+    
+  <!-- Заголовок "Размышляем" -->
+  <div class="text-center mt-12 mb-12 md:mb-0">
+    <h1 class="text-5xl md:text-9xl font-bold md:scale-y-[2.25] md:-translate-y-full hidden md:block">Размышляем</h1>
+    <h1 class="text-base md:text-3xl font-medium md:-translate-y-[150%] hidden md:block">Об обучении, концепциях и подходах</h1>
+      
+      <!-- Кнопка возврата -->
+      <div class="mt-8 mb-4">
+        <a href="{{ site.baseurl }}/" 
+           class="px-4 py-2 rounded-full font-medium transition-colors duration-300 border border-transparent"
+           style="background-color: var(--color-hover-current-page); color: var(--color-text-current-page);"
+           onmouseover="this.style.backgroundColor='var(--color-text-current-page)';this.style.color='var(--color-hover-current-page)';"
+           onmouseout="this.style.backgroundColor='var(--color-hover-current-page)';this.style.color='var(--color-text-current-page)';">
+           Все статьи
+        </a>
+        <span class="ml-4 text-sm font-medium opacity-70">Найдено статей: {{ site.tags[page.tag].size }}</span>
+      </div>
+    </div>
+
+    {% for post in site.tags[page.tag] %}
+    {% include post.html %}
+    {% endfor %}
+
+  </div>
+
+  <div style="height:80vh"></div>
+</div>
+
+{% include footer.html %}
