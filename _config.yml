@@ -1,17 +1,10 @@
 title: МЕТОД — А # Для name_bar
 url_title: МЕТОД — А | Решения для бизнеса
 email: mail@method-a.ru
-phone: +79310037539
+phone: +79000005705
 telegram: method_a
-telegram_dm: merkoeva_work
-whatsapp: 79310037539
+telegram_dm: sabelnikova_ae
+whatsapp: +79000005705
 baseurl: ""
 url: https://method-a.ru
 data_url: https://ftp.method-a.ru
-
-# Пагинация
-plugins:
-  - jekyll-paginate
-
-paginate: 5
-paginate_path: "/page/:num/"
