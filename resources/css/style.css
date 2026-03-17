@@ -38,9 +38,15 @@
 /* Firefox */
 html {
   scrollbar-width: none;
+  height: 100%;
+  overflow: hidden;
+  overscroll-behavior: none;
 }
 
 /* Internet Explorer 10+ */
 body {
   -ms-overflow-style: none;
+  height: 100%;
+  overflow: hidden;
+  overscroll-behavior: none;
 }
