@@ -30,11 +30,12 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 
+  gsap.set(bgBlend, { clipPath: "inset(0% round 0rem 0rem 0rem 0rem)" });
+
   tl.to(bgBlend, {
     scale: scaleVal,
     y: yBlendVal,
-    borderBottomLeftRadius: "2rem",
-    borderBottomRightRadius: "2rem",
+    clipPath: "inset(0% round 0rem 0rem 2rem 2rem)",
     ease: "sine.inOut"
   }, 0)
   .to(bgBottom, {
